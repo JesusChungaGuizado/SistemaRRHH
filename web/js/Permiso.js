@@ -1,40 +1,15 @@
-import { Alerta, abrirModal, filtro, validateForm } from './Functions.js'
+import { Alerta, abrirModal, filtro, validateForm,ComboSearchPersonal,abrirModalX,ListElementComboSearchPersonal } from './Functions.js'
 $(document).ready(function () {
      RegistrarPermiso();
-    ListComboPersonal();
+    ListElementComboSearchPersonal("idPersonal");
     ListarPermiso();
     abrirModal();
     filtro("tabla-permisos");
     validateForm();
+    ComboSearchPersonal("idPersonal");
+    UpdatePermiso();
+    abrirModalX("myBtn2", "myModal2");
 });
-
-//Gestion de Permisos
-$("#idPersonal").select2({
-   width: 'resolve' ,
-     placeholder: 'Seleccione un empleado',
-  allowClear: true
-});
-
-function ListComboPersonal(){
-        var list_personal = document.querySelector("#idPersonal");
-         $.ajax({
-        url: "listarComboPersonal.htm",
-        type: 'GET',
-        success: function (result) {
-            var resp = JSON.parse(result);
-            console.log(resp)
-            var text = "";
-            text += '<option selected></option>';
-            $.each(resp, function (indice, lista) {
-                text += '<option value=' + lista[0] + ' >'+lista[3]+" - " + lista[2].toUpperCase() +" "+lista[1].toUpperCase() + '</option>';
-
-            });
-            list_personal.innerHTML = text;
-
-
-        }
-    });
-}
 function SearchPersonalPermiso() {
     
     var botones = document.querySelector("#btn-search");
@@ -59,7 +34,7 @@ function SearchPersonalPermiso() {
                
             }
         });
-    })
+    });
 }
 function RegistrarPermiso() {
     $("#form-regis-permiso").submit(function (e) {
@@ -101,21 +76,50 @@ function ListarPermiso() {
             $.each(result, function (indice, lista) {
                 //console.log(lista)
                 template.querySelectorAll('td')[0].textContent = lista[6];
-                template.querySelectorAll('td')[1].textContent = lista[2] + " , " + lista[1];
+                template.querySelectorAll('td')[1].textContent = lista[2].toUpperCase() + " , " + lista[1].toUpperCase();
                 template.querySelectorAll('td')[2].textContent = lista[3];
                 template.querySelectorAll('td')[3].textContent = lista[4];
                 template.querySelectorAll('td')[4].textContent = lista[5];
-                template.querySelectorAll('td')[5].lastElementChild.value = lista[0];
+                template.querySelectorAll('td button')[0].value = lista[7];
+                template.querySelectorAll('td button')[1].value = lista[7];
                 var clone = template.cloneNode(true);
                 fragment.appendChild(clone);
             });
             tabla_cargo.appendChild(fragment);
+            SearchPermiso();
             deletePermiso();
 
         }
     });
 }
+function UpdatePermiso() {
+    var btnRegistro = document.getElementById("btn-update");
+    $("#form-update-permiso").submit(function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: "updatePermiso.htm",
+            type: 'POST',
+            data: $("#form-update-permiso").serialize(), // Al atributo data se le asigna el objeto FormData.
+            success: function (resultado) {
+                if (JSON.parse(resultado) == "Datos Actualizados") {
+                    Swal.fire(
+                            'Succesfully!',
+                            'Se actualizó correctamente',
+                            'success'
+                            ).then((result) => {
+                        if (result.isConfirmed) {
+                            parent.location.href = "permisos.htm";
+                        }
+                    });
+                } else {
+                    Alerta("error", resultado);
+                }
 
+                console.log(JSON.parse(resultado));
+            }
+        });
+    });
+}
 function deletePermiso(){
    
     var botones = document.querySelectorAll(".delete");
@@ -125,7 +129,7 @@ function deletePermiso(){
             console.log(dato);
             Swal.fire({
                 title: 'Are you sure?',
-                text: "Se eliminará elcargo seleccionado!",
+                text: "Se eliminará el permiso seleccionado!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -156,6 +160,36 @@ function deletePermiso(){
                 }
             });
 
+        });
+    });
+}
+function SearchPermiso() {
+   
+    var botones = document.querySelectorAll(".update");
+    $.each(botones, function (indice, lista) {
+        lista.addEventListener("click", (e) => {
+             $("#myModal2").modal();
+            
+            var dato = "id=" + lista.value;
+             console.log(dato);
+            $.ajax({
+                url: "searchPermiso.htm",
+                type: 'POST',
+                data: dato,
+                success: function (resul) {
+
+                    var resultado = JSON.parse(resul);
+                    console.log(resultado);
+                    $("#myModal2").modal();
+                    document.getElementById("idPermiso").value = resultado[0];
+                     document.getElementById("namePersonal").value =resultado[7]+" - "+resultado[3].toUpperCase() +" "+resultado[2].toUpperCase();
+                    document.getElementById("fechaInicio2").value = resultado[4];
+                    document.getElementById("fechaFinal2").value = resultado[5];
+                    document.getElementById("descripcion2").value = resultado[6];
+                    
+                    
+                }
+            });
         });
     });
 }

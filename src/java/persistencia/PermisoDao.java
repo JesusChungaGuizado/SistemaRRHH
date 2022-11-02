@@ -16,4 +16,6 @@ public interface PermisoDao {
      public String RegistrarPermiso(Permiso pe);
     public List ListPermisos();
     public String deletePermiso(int id);
+    public Object[] searchPermiso(int id);
+    public String updatePermiso(Permiso pe);
 }

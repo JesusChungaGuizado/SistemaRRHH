@@ -5,7 +5,10 @@ $(document).ready(function () {
     ListarCargos();
     ListCombo("listArea.htm", "area");
     ListCombo("listTipoCargos.htm", "cargo");
+    ListCombo("listArea.htm", "area2");
+    ListCombo("listTipoCargos.htm", "cargo2");
     RegistrarCargo();
+    UpdateCargo();
     filtro("tabla-cargos");
   
 });
@@ -44,14 +47,14 @@ function ListarCargos() {
                 template.querySelectorAll('td')[0].textContent = lista[1];
                 template.querySelectorAll('td')[1].textContent = lista[2];
                 template.querySelectorAll('td')[2].textContent = lista[3];
-                template.querySelectorAll('td')[3].lastElementChild.value = lista[0]
-
+                template.querySelectorAll('td button')[0].value = lista[0];
+                template.querySelectorAll('td button')[1].value = lista[0];
                 var clone = template.cloneNode(true);
                 fragment.appendChild(clone);
             });
             tabla_cargo.appendChild(fragment);
             deleteCargo();
-
+            SearchCargo();
         }
     });
 }
@@ -90,7 +93,7 @@ function deleteCargo() {
             console.log(dato);
             Swal.fire({
                 title: 'Are you sure?',
-                text: "Se eliminará elcargo seleccionado!",
+                text: "Se eliminará el cargo seleccionado!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -121,6 +124,64 @@ function deleteCargo() {
                 }
             });
 
+        });
+    });
+}
+function SearchCargo() {
+   
+    var botones = document.querySelectorAll(".update");
+    $.each(botones, function (indice, lista) {
+        lista.addEventListener("click", (e) => {
+             $("#myModal2").modal();
+            
+            var dato = "id=" + lista.value;
+             console.log(dato);
+            $.ajax({
+                url: "searchUpdateCargo.htm",
+                type: 'POST',
+                data: dato,
+                success: function (resul) {
+
+                    var resultado = JSON.parse(resul);
+                    console.log(resultado);
+                    $("#myModal2").modal();
+                    document.getElementById("idCargo").value = resultado[0];
+                     document.getElementById("nombre2").value =resultado[1];
+                    document.getElementById("cargo2").value = resultado[2];
+                    document.getElementById("area2").value = resultado[3];
+                    document.getElementById("jefe2").value = resultado[4];
+                    
+                    
+                }
+            });
+        });
+    });
+}
+function UpdateCargo() {
+    var btnRegistro = document.getElementById("btn-update");
+    $("#form-update-cargo").submit(function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: "updateCargo.htm",
+            type: 'POST',
+            data: $("#form-update-cargo").serialize(), // Al atributo data se le asigna el objeto FormData.
+            success: function (resultado) {
+                if (JSON.parse(resultado) == "Datos Actualizados") {
+                    Swal.fire(
+                            'Succesfully!',
+                            'Se actualizó correctamente',
+                            'success'
+                            ).then((result) => {
+                        if (result.isConfirmed) {
+                            parent.location.href = "cargo.htm";
+                        }
+                    });
+                } else {
+                    Alerta("error", resultado);
+                }
+
+                console.log(JSON.parse(resultado));
+            }
         });
     });
 }

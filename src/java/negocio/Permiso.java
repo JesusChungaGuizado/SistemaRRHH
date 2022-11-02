@@ -22,7 +22,7 @@ public class Permiso {
         this.fechaFinal = fechaFinal;
         this.descripcion = descripcion;
     }
-
+    
     public Permiso() {
     }
 

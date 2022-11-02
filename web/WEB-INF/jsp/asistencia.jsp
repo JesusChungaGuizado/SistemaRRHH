@@ -26,7 +26,7 @@
         <main >
             <div class="page-header mb-3">
                 <div>
-                    <h1>Asistencia</h1>
+                    <h1>Control de Asistencias</h1>
                 </div>
                 <!--  <div class="header-actions">
                       <button id="export-pdf">
@@ -40,12 +40,20 @@
                   </div>-->
             </div>
             <div class="botones-crud">
-                <div class="d-flex flex-wrap ">
-                    <button type="button" class="btn btn-primary mb-3 " id="myBtn"><img src="img/plus.svg">Registrar Entrada</button>
-                    <button type="button" class="btn btn-primary mb-3 ml-3" id="myBtn2"><img src="img/plus.svg">Registrar Salida</button>
-
+                <div class="d-flex ">
+                    <button type="button" class="btn btn-primary mb-3 " id="myBtn"><img src="img/plus.svg">Registrar Entrada/Salida</button>
+                    <button type="button" class="btn btn-primary mb-3 ml-3 " id="myBtnVerFaltas"><img src="img/icons8-visible-50.png" class="mr-1"/> Inasistencias</button>
+                    
                 </div>
-                <input class="form-control mb-3" id="myInput" type="text" placeholder="Search..">
+                <div class="d-flex ">
+                    <input class="form-control mb-3" id="myInput" type="text" placeholder="Search..">
+                    <div class="input-group mb-3 ml-3">
+                        <input type="date" id="filtrofecha" class="form-control" placeholder="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-success" id="btn-filtro" type="submit"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- The Modal de Regsitro -->
             <div class="modal fade" id="myModal">
@@ -54,35 +62,39 @@
 
                         <!-- Modal Header -->
                         <div class="modal-header">
-                            <h4 class="modal-title">Nuevo Entrada</h4>
+                            <h4 class="modal-title">Nueva Asistencia</h4>
                             <button type="button" class="close" data-dismiss="modal">×</button>
                         </div>
 
                         <!-- Modal body -->
                         <div class="modal-body">
-                           
-                            <form id="form-regis-horario" class="form-row needs-validation d-flex flex-column" novalidate >
+
+                            <form id="form-regis-asistencia" class="form-row needs-validation d-flex flex-column" novalidate >
                                 <div class="row mb-3 flex-fill" >
                                     <div class="col-sm-12  d-flex flex-wrap justify-content-between align-items-center" >
-                                        <select name="empleado" id="buscador" class=" custom-select form-control " style="width: 100%" required="true" >
-                                            <option selected></option>
-                                            <option value="M">74118013-CHUNGA GUIZADO JESUS ALBERTO</option>
-                                            <option value="F">63112016-ROJAS MORALES LUIS GUSTAVO</option>
-                                            <option value="M">74118013-CHUNGA GUIZADO MARIA</option>
+                                        <select name="idPersonal" id="buscador" class=" custom-select form-control " style="width: 100%" required="true" >
                                         </select>
                                         <div class="invalid-feedback">Seleccione una opción</div>
                                     </div>
-                                    
+
+                                </div>
+                                <div class="row mb-3 flex-fill" >
+                                    <div class="col-sm-12 d-flex flex-wrap justify-content-between align-items-center" >
+                                        <label class="label-input mr-1" for="fecha">Fecha</label>
+                                        <input type="date" id="horaInicio" name="fecha"  class="form-control "  required="true"  >
+                                        <div class="invalid-feedback">Ingrese una fecha</div>
+                                    </div>
+
                                 </div>
                                 <div class="row mb-3 flex-fill" >
                                     <div class="col-sm-6 d-flex flex-wrap justify-content-between align-items-center" >
                                         <label class="label-input mr-1" for="horaInicio">Hora Inicio</label>
-                                        <input type="datetime-local" id="horaInicio" name="horaInicio"  class="form-control "  required="true"  >
+                                        <input type="time" id="horaInicio" name="horaInicio"  class="form-control "  required="true"  >
                                         <div class="invalid-feedback">Ingrese una hora de inicio</div>
                                     </div>
                                     <div class="col-sm-6 d-flex flex-wrap justify-content-between align-items-center" >
-                                        <label class="label-input mr-1" for="horaFinal">Hora Final</label>
-                                        <input type="datetime-local" id="horaFinal" name="horaFinal"  class="form-control "  required="true"  >
+                                        <label class="label-input mr-1" for="horaSalida">Hora Salida</label>
+                                        <input type="time" id="horaSalida" name="horaSalida"  class="form-control "  required="true"  >
                                         <div class="invalid-feedback">Ingrese una fecha de fin</div>
                                     </div>
                                 </div>
@@ -96,27 +108,34 @@
                 </div>
             </div>
             <!--Modal Actualizar-->
-            
-             <!-- The Modal de Regsitro -->
+
+            <!-- The Modal de Regsitro -->
             <div class="modal fade" id="myModal2">
                 <div class="modal-dialog">
                     <div class="modal-content">
 
                         <!-- Modal Header -->
                         <div class="modal-header">
-                            <h4 class="modal-title">Nueva Salida</h4>
+                            <h4 class="modal-title">Actualizar Asistencia</h4>
                             <button type="button" class="close" data-dismiss="modal">×</button>
                         </div>
 
                         <!-- Modal body -->
                         <div class="modal-body">
-                            <form id="form-update-horario" class="form-row needs-validation d-flex flex-column" novalidate >
-                                <input type="hidden" id="idHorario" name="idHorario"/>
+
+                            <form id="form-update-asistencia" class="form-row needs-validation d-flex flex-column" novalidate >
+                                <input type="hidden" id="idAsistencia" name="idAsistencia"  />
+                                <div class="row mb-3 flex-fill" >
+                                    <div class="col-sm-12  d-flex flex-wrap justify-content-between align-items-center" >
+                                        <input disabled id="personal2" class=" form-control " >
+                                    </div>
+
+                                </div>
                                 <div class="row mb-3 flex-fill" >
                                     <div class="col-sm-12 d-flex flex-wrap justify-content-between align-items-center" >
-                                        <label class="label-input mr-1" for="nombre">Nombre</label>
-                                        <input type="text" id="nombre2" name="nombre"  minlength="3" class="form-control "  required="true"  />
-                                        <div class="invalid-feedback">Ingrese nombre valido</div>
+                                        <label class="label-input mr-1" for="fecha">Fecha</label>
+                                        <input type="date" id="fecha2" name="fecha" class="form-control "  required="true"  >
+                                        <div class="invalid-feedback">Ingrese una fecha</div>
                                     </div>
 
                                 </div>
@@ -127,8 +146,8 @@
                                         <div class="invalid-feedback">Ingrese una hora de inicio</div>
                                     </div>
                                     <div class="col-sm-6 d-flex flex-wrap justify-content-between align-items-center" >
-                                        <label class="label-input mr-1" for="horaFinal">Hora Final</label>
-                                        <input type="time" id="horaFinal2" name="horaFinal"  class="form-control "  required="true"  >
+                                        <label class="label-input mr-1" for="horaSalida">Hora Salida</label>
+                                        <input type="time" id="horaSalida2" name="horaSalida"  class="form-control "  required="true"  >
                                         <div class="invalid-feedback">Ingrese una fecha de fin</div>
                                     </div>
                                 </div>
@@ -141,8 +160,27 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <!-- Lista de Inasistencias -->
+             <div class="modal fade" id="myModalFaltas">
+                <div class="modal-dialog">
+                    <div class="modal-content">
 
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Lista Inasistencias</h4>
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <ul class="list-group list-group-flush" id="list-faltas">
+                                
+                              </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-sm-12 title-report">
                     <table class="table table-bordered table-hover table-light table-sm" id="datos_tabla">
                         <thead class="thead-dark">
@@ -151,12 +189,18 @@
                                 <th>Empleado</th>
                                 <th>Horario</th>
                                 <th>Entrada</th>
-                                <th>Horario</th>
+                                <th>Salida</th>
                                 <th>Tiempo registado</th>
-                                <th colspan="2">Operaciones</th>
+                                <th colspan="2" >Operaciones</th>
+
                             </tr>
                         </thead>
                         <tbody id="tabla-horario" >
+
+
+                       
+                        </tbody>
+                         <template id="template-horario">
                             <tr >
                                 <td >17/10/2022</td>
                                 <td >Jesus Chunga</td>
@@ -169,19 +213,7 @@
 
 
                             </tr>
-
-                        <template id="template-horario">
-                            <tr >
-                                <td ></td>
-                                <td ></td>
-                                <td ></td>
-                                <td> <button class="btn btn-primary update"  ><i class="fas fa-edit"></i></button></td>
-                                <td> <button class="btn btn-danger delete"  ><i class="far fa-trash-alt"></i></button> </td>
-
-
-                            </tr>
                         </template>
-                        </tbody>
                     </table>
                     <div id="dvjson"></div>
                 </div>

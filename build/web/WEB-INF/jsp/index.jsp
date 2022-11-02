@@ -11,9 +11,23 @@
             />
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="styles/toastr.css">
+        <link rel="stylesheet" href="styles/styleFondo.css">
     </head>
     <body>
-
+<div class="area" >
+            <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </ul>
+    </div >
 
         <main class=" container form-container login-box">
             <!--agregar id="login" -->
@@ -23,7 +37,7 @@
                 </div>
                 <div>
 
-                    <h5>Bienvenido a Invent Shod</h5>
+                    <h5>Bienvenido RRHH UNION </h5>
                     <h2>Iniciar Sesión</h2>
 
                 </div>
@@ -35,7 +49,7 @@
                     <input type="password" name="pass" required="true">
                     <label>Password</label>
                 </div>
-                <input type="submit" id="btn-login" value="Sign In" class="btn solid" />
+                <input type="submit" id="btn-login" value="Sign In" class="btn btn-primary solid" />
 
             </form>
         </main>

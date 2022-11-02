@@ -91,6 +91,29 @@ public class AdminController {
     String CountPersonalByArea(Model model) {
         return new Gson().toJson(as.countPersonalByArea());
     }
+     @RequestMapping(value = "/listBirtahys.htm", method = RequestMethod.GET)
+    @ResponseBody
+    public String listBirtahys(Model model) {
+        return new Gson().toJson(as.ListBirthays());
+    }
     
-    
+    @RequestMapping(value = "/searchUpdateCargo.htm", method = RequestMethod.POST)
+    public @ResponseBody
+    String searchUpdateCargo( @RequestParam("id") int id, Model model) {
+        return new Gson().toJson(as.searchCargo(id));
+    }
+      @RequestMapping(value = "/updateCargo.htm", method = RequestMethod.POST)
+    public @ResponseBody
+    String updateCargo(
+            @RequestParam("idCargo") int id,
+            @RequestParam("nombre") String nombre,
+            @RequestParam("area") int area,
+            @RequestParam("cargo") int tipoCargo,
+            @RequestParam("jefe") String jefe,
+            Model model
+    ) {
+        Cargo ca=new Cargo(id, nombre, tipoCargo, area, jefe);
+        return new Gson().toJson(as.updateCargo(ca));
+
+    }
 }

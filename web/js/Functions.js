@@ -39,7 +39,7 @@ function filtro(tabla) {
 
     });
 }
-
+//Validar Formularios
 function validateForm() {
     (function () {
 
@@ -58,4 +58,33 @@ function validateForm() {
 
     })();
 }
-export {Alerta, abrirModal, filtro, validateForm,abrirModalX};
+//Buscar y filtra personal
+function ComboSearchPersonal(combo){
+    $("#"+combo).select2({
+        width: 'resolve' ,
+          placeholder: 'Seleccione un empleado',
+       allowClear: true
+    });
+}
+//Lista elementos de comboSearchPersonal - parametro id del combo
+function ListElementComboSearchPersonal(idPersonal){
+        var list_personal = document.querySelector("#"+idPersonal);
+         $.ajax({
+        url: "listarComboPersonal.htm",
+        type: 'GET',
+        success: function (result) {
+            var resp = JSON.parse(result);
+            console.log(resp)
+            var text = "";
+            text += '<option selected></option>';
+            $.each(resp, function (indice, lista) {
+                text += '<option value=' + lista[0] + ' >'+lista[3]+" - " + lista[2].toUpperCase() +" "+lista[1].toUpperCase() + '</option>';
+
+            });
+            list_personal.innerHTML = text;
+
+
+        }
+    });
+}
+export {Alerta, abrirModal, filtro, validateForm,abrirModalX,ComboSearchPersonal,ListElementComboSearchPersonal};

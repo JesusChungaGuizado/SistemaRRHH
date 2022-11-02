@@ -10,7 +10,7 @@ package negocio;
  * @author Jesus
  */
 public class Cargo {
-    private String idCargo;
+    private int idCargo;
     private String nombreCargo;
     private int tipoCargo;
     private int area;
@@ -23,11 +23,19 @@ public class Cargo {
         this.jefe = jefe;
     }
 
-    public String getIdCargo() {
+    public Cargo(int idCargo, String nombreCargo, int tipoCargo, int area, String jefe) {
+        this.idCargo = idCargo;
+        this.nombreCargo = nombreCargo;
+        this.tipoCargo = tipoCargo;
+        this.area = area;
+        this.jefe = jefe;
+    }
+
+    public int getIdCargo() {
         return idCargo;
     }
 
-    public void setIdCargo(String idCargo) {
+    public void setIdCargo(int idCargo) {
         this.idCargo = idCargo;
     }
 

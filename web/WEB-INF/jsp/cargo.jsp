@@ -94,17 +94,70 @@
                     </div>
                 </div>
             </div>
+              <!-- The Modal de Actulizar -->
+            <div class="modal fade" id="myModal2">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Actualizar Cargo</h4>
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <form id="form-update-cargo" class="form-row needs-validation d-flex flex-column" novalidate >
+                                <input type="hidden" id="idCargo" name="idCargo" />
+                                <div class="row mb-3 flex-fill" >
+                                    <div class="col-sm-12 d-flex flex-wrap justify-content-between align-items-center" >
+                                        <label class="label-input mr-1" for="nombre">Nombre de Cargo</label>
+                                        <input type="text" id="nombre2" name="nombre" minlength="3" class="form-control "  required="true"  >
+                                        <div class="invalid-feedback">Ingrese un nombre</div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3 flex-fill" >
+                                    <div class="col-sm-6  d-flex flex-wrap justify-content-between align-items-center"  >
+                                        <label class="label-input mr-1" for="cargo">Tipo de Cargo</label>
+                                        <select name="cargo" class="custom-select" required="true" id="cargo2">
+                                            
+                                            
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6 d-flex flex-wrap justify-content-between align-items-center" >
+                                        <label class="label-input mr-1" for="area">Área</label>
+                                        <select name="area" class="custom-select" required="true" id="area2">
+
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="row mb-3 flex-fill" >
+                                    <div class="col-sm-12 d-flex flex-wrap justify-content-between align-items-center" >
+                                        <label class="label-input mr-1" for="jefe">Jefe Directo</label>
+                                        <input type="text" id="jefe2" name="jefe" minlength="3" class="form-control "  required="true"  >
+                                        <div class="invalid-feedback">Ingrese un nombre válido</div>
+                                    </div>
+                                </div>
+                               
+                                    <button type="submit" class="btn btn-primary input-item mr-auto"  id="btn-empleado" >Actualizar</button>
+                                
+                            </form> 
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row">
 
                 <div class="col-sm-12 title-report">
-                    <table class="table table-hover table-light" id="datos_tabla">
-                        <thead>
+                    <table class="table table-bordered table-hover table-light table-sm" id="datos_tabla">
+                        <thead class="thead-dark">
                             <tr>
                                 <th>Nombre</th>
                                 <th>Tipo de Cargo</th>
                                 <th>Area</th>
                                 <th>Opción</th>
-
                             </tr>
                         </thead>
                         <tbody id="tabla-cargos" >
@@ -114,7 +167,10 @@
                                 <td ></td>
                                 <td class="nombre"></td>
                                 <td class="dni"></td>
-                                <td><button class="btn btn-danger delete"  ><i class="far fa-trash-alt"></i></button></td>
+                                <td>
+                                    <button class="btn btn-primary update"  ><i class="far fa-edit"></i></button>
+                                    <button class="btn btn-danger delete"  ><i class="far fa-trash-alt"></i></button>
+                                </td>
                             </tr>
                         </template>
                         </tbody>

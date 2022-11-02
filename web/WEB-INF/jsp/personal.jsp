@@ -327,7 +327,7 @@
             <div class="row">
 
                 <div class="col-sm-12 title-report">
-                    <table class="table table-hover table-light table-sm" id="datos_tabla">
+                    <table class="table table-bordered table-hover table-light table-sm" id="datos_tabla">
                         <thead class="thead-dark" >
                             <tr>
                                 <th>Doc. Identidad</th>

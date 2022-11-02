@@ -5,7 +5,9 @@
  */
 package persistencia;
 
+import java.util.ArrayList;
 import java.util.List;
+import negocio.Asistencia;
 import negocio.Horario;
 import org.springframework.stereotype.Service;
 
@@ -56,4 +58,45 @@ public class HorarioDaoImp implements HorarioDao {
         return null;
     }
 
+    @Override
+    public List listAsistencia() {
+        String sql = "{call ListAsistencia()}";
+        return  Operacion.listar(sql);     
+    }
+    @Override
+    public String registrarAsistencia(Asistencia a) {
+         String sql = "{call RegistrarAsistencia(" + a.getIdEmpleado()+ ",'" + a.getFecha() + "','" + a.getEntrada() + "','"+a.getSalida()+"','"+a.getHorasTrabajadas()+"')}";
+        return Operacion.ejecutar(sql);
+    }
+    @Override
+    public Object[]  searchAsistencia(int id) {
+        String sql = "{call SearchAsistencia(" + id + ")}";
+        Object[] fil = (Object[]) Operacion.buscar(sql);
+        if (fil != null) {
+          return fil;
+        }
+        return null;
+    }
+    @Override
+    public String updateAsistencia(Asistencia a) {
+         String sql = "{call UpdateAsistencia("+a.getIdAsistencia()+",'" + a.getFecha() + "','" + a.getEntrada() + "','"+a.getSalida()+"','"+a.getHorasTrabajadas()+"')}";
+        return Operacion.ejecutar(sql);
+    }
+    @Override
+    public String deleteAsistencia(int id) {
+        String sql = "{call DeleteAsistencia(" + id + ")}";
+        return Operacion.ejecutar(sql);
+    }
+
+    @Override
+    public List FiltrarByFecha(String fecha) {
+        String sql = "{call FiltrarAsistenciaFecha('"+fecha+"')}";
+        return  Operacion.listar(sql);
+    }
+     @Override
+    public List listInasistencias(){
+      String sql = "{call ListarInasistencias()}";
+        return Operacion.listar(sql);
+    };
+    
 }

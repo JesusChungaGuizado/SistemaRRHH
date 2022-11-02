@@ -6,6 +6,7 @@
 package persistencia;
 
 import java.util.List;
+import negocio.Asistencia;
 import negocio.Horario;
 
 /**
@@ -18,4 +19,11 @@ public interface HorarioDao {
     public Horario searchHorario(int id);
     public String updateHorario(Horario id);
     public String deleteHorario(int id);
+    public List listAsistencia();
+    public String registrarAsistencia(Asistencia a);
+    public Object[] searchAsistencia(int id);
+    public String updateAsistencia(Asistencia a);
+    public String deleteAsistencia(int id);
+    public List FiltrarByFecha(String fecha);
+    public List listInasistencias();
 }

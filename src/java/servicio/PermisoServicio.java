@@ -15,4 +15,6 @@ public interface PermisoServicio {
       public String RegistrarPermiso(Permiso pe);
       public List ListPermisos();
       public String DeletePermiso(int idPersonal);
+      public Object[] searchPermiso(int id);
+      public String updatePermiso(Permiso pe);
 }

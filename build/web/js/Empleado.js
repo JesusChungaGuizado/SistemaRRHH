@@ -147,7 +147,7 @@ function RegistrarEmpleado() {
                         }
                     });
                 } else {
-                    Alerta("error", resultado);
+                    Alerta("error", JSON.parse(resultado));
                 }
 
                 console.log(JSON.parse(resultado));

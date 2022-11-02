@@ -28,6 +28,11 @@ public class Horario {
         this.horaFin = horaFin;
     }
 
+    public Horario(String horaInicio, String horaFin) {
+        this.horaInicio = horaInicio;
+        this.horaFin = horaFin;
+    }
+
     public Horario() {
     }
 

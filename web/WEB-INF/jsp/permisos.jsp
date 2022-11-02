@@ -73,7 +73,7 @@
                                         <div class="invalid-feedback">Ingrese una fecha inicial</div>
                                     </div>
                                     <div class="col-sm-6 d-flex flex-wrap justify-content-between align-items-center" >
-                                        <label class="label-input mr-1" for="fechaFinal">Fecha de Inicio</label>
+                                        <label class="label-input mr-1" for="fechaFinal">Fecha de Fin</label>
                                         <input type="date" id="fechaFinal" name="fechaFinal" minlength="3" class="form-control "  required="true"  >
                                         <div class="invalid-feedback">Ingrese una fecha de fin</div>
                                     </div>
@@ -94,6 +94,56 @@
                     </div>
                 </div>
             </div>
+            <!--Actualizar--->
+                <div class="modal fade" id="myModal2">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Actualizar Permiso</h4>
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <form id="form-update-permiso" class="form-row needs-validation d-flex flex-column" novalidate >
+                                 <input type="hidden" id="idPermiso" name="idPermiso"  />
+                                <div class="row mb-3 flex-fill" >
+                                    <div class="col-sm-12  d-flex flex-wrap justify-content-between align-items-center" >
+                                        <input disabled id="namePersonal" class="form-control " required="true" />
+                                    </div>
+
+                                </div>
+                                <div class="row mb-3 flex-fill" >
+                                    <div class="col-sm-6 d-flex flex-wrap justify-content-between align-items-center" >
+                                        <label class="label-input mr-1" for="fechaInicio">Fecha de Inicio</label>
+                                        <input type="date" id="fechaInicio2" name="fechaInicio" minlength="3" class="form-control "  required="true"  >
+                                        <div class="invalid-feedback">Ingrese una fecha inicial</div>
+                                    </div>
+                                    <div class="col-sm-6 d-flex flex-wrap justify-content-between align-items-center" >
+                                        <label class="label-input mr-1" for="fechaFinal">Fecha de Fin</label>
+                                        <input type="date" id="fechaFinal2" name="fechaFinal" minlength="3" class="form-control "  required="true"  >
+                                        <div class="invalid-feedback">Ingrese una fecha de fin</div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 flex-fill" >
+                                    <div class="col-sm-12 d-flex flex-wrap justify-content-between align-items-center" >
+                                        <label class="label-input mr-1" for="descripcion">Descripción</label>
+                                        <textarea  id="descripcion2" name="descripcion" minlength="3"  class="form-control "  required="true"  ></textarea>
+                                        <div class="invalid-feedback">Ingrese una descripcion</div>
+                                    </div>
+                                </div>
+
+
+                                <button type="submit" class="btn btn-primary input-item mr-auto"  >Actualizar</button>
+
+                            </form> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+       
             <div class="row">
 
                 <div class="col-sm-12 title-report">
@@ -105,7 +155,7 @@
                                 <th>Fecha Inicio</th>
                                 <th>Fecha Fin</th>
                                 <th>Descripción</th>
-                                <th>Opcione</th>
+                                <th>Opciones</th>
                             </tr>
                         </thead>
                         <tbody id="tabla-permisos" >
@@ -117,7 +167,10 @@
                                 <td ></td>
                                 <td ></td>
                                 <td ></td>
-                                <td><button class="btn btn-danger delete"  ><i class="far fa-trash-alt"></i></button></td>
+                                <td>
+                                    <button class="btn btn-primary update"  ><i class="far fa-edit"></i></button>
+                                    <button class="btn btn-danger delete"  ><i class="far fa-trash-alt"></i></button>
+                                </td>
                             </tr>
                         </template>
                         </tbody>

@@ -43,4 +43,31 @@ public class PermisoServicioImp implements PermisoServicio {
         }
         return msg;
     }
+     @Override
+    public Object[] searchPermiso(int id){
+     
+           Object[] p =(Object[]) pd.searchPermiso(id);
+
+        if (p != null) {
+            Object[] ob = new Object[8];
+            ob[0] = (int)p[0];
+            ob[1] = (int)p[1];
+            ob[2] = p[2].toString();
+            ob[3] = p[3].toString();
+            ob[4] = p[4].toString();
+            ob[5] = p[5].toString();
+            ob[6] = p[6].toString();
+            ob[7] = p[7].toString();
+            return ob;
+        }
+        return null;
+    }
+    @Override
+    public String updatePermiso(Permiso pe){
+        String msg = pd.updatePermiso(pe);
+        if (msg == null) {
+            msg = "Datos Actualizados";
+        }
+        return msg;
+    }
 }

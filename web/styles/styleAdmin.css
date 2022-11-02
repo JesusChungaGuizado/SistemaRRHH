@@ -536,6 +536,12 @@ transition: ease-in-out clip-path 0.1s;
     
     
 }
+/*Estilo Lista de Inasistencias*/
+.list-group-flush{
+    max-height: 200px;
+    overflow-y: auto;
+}
+    
 @media only screen and (max-width:1124px) {
     .sidebar{
         left: -100%;

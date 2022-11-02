@@ -8,7 +8,6 @@ package persistencia;
 import java.util.ArrayList;
 import java.util.List;
 import negocio.Cargo;
-import negocio.Permiso;
 import org.springframework.stereotype.Service;
 
 /**
@@ -83,19 +82,28 @@ public class AdminDaoImp implements AdminDao {
 
     @Override
     public Object[] SearchCargoByName(String name) {
-        String sql = "{call SearchCargoByName('"+name+"')}";
+        String sql = "{call SearchCargoByName('" + name + "')}";
         return Operacion.buscar(sql);
     }
 
     @Override
-    public String RegistrarPermiso(Permiso pe) {
-        String sql = "{call RegistrarPermiso(" + pe.getIdPersonal() + ",'" + pe.getFechaInicio() + "','" +pe.getFechaFinal() + "','" +pe.getDescripcion() + "')}";
-        return Operacion.ejecutar(sql);
+    public List ListBirthays() {
+        String sql = "{call ListBirthday()}";
+        return Operacion.listar(sql);
     }
 
     @Override
-    public List ListPermisos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Object[] searchUpdateCargo(int idC) {
+        String sql = "{call SearchCargoUpdate(" + idC + ")}";
+        return Operacion.buscar(sql);
+
+    }
+
+    @Override
+    public String updateCargo(Cargo c) {
+        String sql = "{call UpdateCargo(" + c.getIdCargo() + ",'" + c.getNombreCargo() + "'," + c.getTipoCargo() + "," + c.getArea() + ",'" + c.getJefe() + "')}";
+        return Operacion.ejecutar(sql);
+
     }
 
 }

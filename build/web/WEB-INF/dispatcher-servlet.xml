@@ -28,6 +28,9 @@
     <mvc:view-controller path="/permisos.htm" view-name="permisos"/> 
      <mvc:view-controller path="/horario.htm" view-name="horario"/>
      <mvc:view-controller path="/asistencia.htm" view-name="asistencia"/>
+     <mvc:view-controller path="/inasistencia.htm" view-name="inasistencia"/>
+     <mvc:view-controller path="/equipos.htm" view-name="dispositivo"/>
+     <mvc:view-controller path="/asignar.htm" view-name="asignar"/>
     <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
 
     <!--

@@ -24,6 +24,8 @@ public interface AdminDao {
     public List verDatos();
     public List countPersonalByArea();
     public Object[] SearchCargoByName(String name);
-    public String RegistrarPermiso(Permiso pe);
-    public List ListPermisos();
+    public List ListBirthays();
+    public Object[] searchUpdateCargo(int idC);
+    public String updateCargo(Cargo c);
+           
 }

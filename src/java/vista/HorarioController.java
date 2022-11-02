@@ -6,6 +6,7 @@
 package vista;
 
 import com.google.gson.Gson;
+import negocio.Asistencia;
 import negocio.Horario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -49,7 +50,7 @@ public class HorarioController {
 
         return new Gson().toJson(hs.searchHorario(id));
     }
- @RequestMapping(value = "/updateHorario.htm", method = RequestMethod.POST)
+    @RequestMapping(value = "/updateHorario.htm", method = RequestMethod.POST)
     public @ResponseBody
     String updaterHorario(
             @RequestParam("idHorario")int id,
@@ -59,11 +60,70 @@ public class HorarioController {
         Horario h = new Horario(id,nomb, fechaI, fechaF);
         return new Gson().toJson(hs.updateHorario(h));
     }
-      @RequestMapping(value = "/deleteHorario.htm", method = RequestMethod.POST)
+    @RequestMapping(value = "/deleteHorario.htm", method = RequestMethod.POST)
     public @ResponseBody
     String deleteHorario(
             @RequestParam("id") int id, Model m) {
 
         return new Gson().toJson(hs.deleteHorario(id));
+    }
+    @RequestMapping(value = "/listAsistencia.htm", method = RequestMethod.GET)
+    public @ResponseBody
+    String ListAsistencia(Model model) {
+        return new Gson().toJson(hs.listAsistencia());
+    }
+    
+    @RequestMapping(value = "/registrarAsistencia.htm", method = RequestMethod.POST)
+    public @ResponseBody
+    String registrarAsistencia(
+            @RequestParam("idPersonal") int idPersonal,
+            @RequestParam("fecha") String fecha,
+            @RequestParam("horaInicio") String horaI,
+            @RequestParam("horaSalida") String horaS, Model m) {
+          Asistencia a=new Asistencia(idPersonal, fecha, horaI, horaS);
+          a.setHorasTrabajadas();
+        return new Gson().toJson(hs.registrarAsistencia(a));
+    }
+    
+    @RequestMapping(value = "/buscarAsistencia.htm", method = RequestMethod.POST)
+    public @ResponseBody
+    String buscarAsistencia(
+            @RequestParam("id") int id, Model m) {
+
+        return new Gson().toJson(hs.searchAsistencia(id));
+    }
+    @RequestMapping(value = "/updateAsistencia.htm", method = RequestMethod.POST)
+    public @ResponseBody
+    String updateAsistencia(
+            @RequestParam("idAsistencia") int idAsis,
+            @RequestParam("fecha") String fecha,
+            @RequestParam("horaInicio") String horaI,
+            @RequestParam("horaSalida") String horaS, Model m) {
+          Asistencia a=new Asistencia();
+          a.setIdAsistencia(idAsis);
+          a.setFecha(fecha);
+          a.setEntrada(horaI);
+          a.setSalida(horaS);
+          a.setHorasTrabajadas();
+        return new Gson().toJson(hs.updateAsistencia(a));
+    }
+    @RequestMapping(value = "/deleteAsistencia.htm", method = RequestMethod.POST)
+    public @ResponseBody
+    String deleteAsistencia(
+            @RequestParam("id") int id, Model m) {
+
+        return new Gson().toJson(hs.deleteAsistencia(id));
+    }
+     @RequestMapping(value = "/filtrarByFecha.htm", method = RequestMethod.POST)
+    public @ResponseBody
+    String filtrarByFecha(
+            @RequestParam("fecha") String fecha, Model m) {
+
+        return new Gson().toJson(hs.FiltrarByFecha(fecha));
+    }
+    @RequestMapping(value = "/listInasistencias.htm", method = RequestMethod.GET)
+    public @ResponseBody
+    String ListInasistencias(Model model) {
+        return new Gson().toJson(hs.listInasistencias());
     }
 }

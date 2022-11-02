@@ -33,7 +33,19 @@ public class PermisoDaoImp implements PermisoDao{
         String sql = "{call DeletePermiso("+id+")}";
         return Operacion.ejecutar(sql);
     }
-
-    
+    @Override
+    public Object[] searchPermiso(int id){
+     String sql = "{call SearchPermiso(" + id + ")}";
+        Object[] fil = (Object[]) Operacion.buscar(sql);
+        if (fil != null) {
+          return fil;
+        }
+        return null;
+    }
+    @Override
+     public String updatePermiso(Permiso pe){
+     String sql = "{call UpdatePermiso("+pe.getIdPermiso()+",'"+pe.getFechaInicio()+"','"+pe.getFechaFinal()+"','"+pe.getDescripcion()+"')}";
+        return Operacion.ejecutar(sql);
+     }
     
 }

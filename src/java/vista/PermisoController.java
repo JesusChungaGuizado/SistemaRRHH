@@ -46,4 +46,24 @@ public class PermisoController {
     String DeletePermiso(@RequestParam("idPersonal") int id, Model model) {
         return new Gson().toJson(ps.DeletePermiso(id));
     }
+    @RequestMapping(value = "/searchPermiso.htm", method = RequestMethod.POST)
+    public @ResponseBody
+    String SearchPermiso(@RequestParam("id") int id, Model model) {
+        return new Gson().toJson(ps.searchPermiso(id));
+    }
+    @RequestMapping(value = "/updatePermiso.htm", method = RequestMethod.POST)
+    public @ResponseBody
+    String UpdaterPermiso(
+            @RequestParam("idPermiso") int idPermiso,
+            @RequestParam("fechaInicio") String fechaInicio,
+            @RequestParam("fechaFinal") String fechaFinal,
+            @RequestParam("descripcion") String descripcion,
+            Model model) {
+        Permiso pe=new Permiso();
+        pe.setIdPermiso(idPermiso);
+        pe.setFechaInicio(fechaInicio);
+        pe.setFechaFinal(fechaFinal);
+        pe.setDescripcion(descripcion);
+        return new Gson().toJson(ps.updatePermiso(pe));
+    }
 }

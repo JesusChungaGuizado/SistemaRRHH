@@ -23,6 +23,9 @@ public interface AdminServicio {
       public String DeleteCargo(int id);
       public List VerDatos();
       public List countPersonalByArea();
+      public List ListBirthays() ;
+      public Object[] searchCargo(int id);
+    public String updateCargo(Cargo c);
     
     
 }

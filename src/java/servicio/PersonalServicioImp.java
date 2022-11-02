@@ -17,23 +17,30 @@ import persistencia.PersonalDao;
  * @author Jesus
  */
 @Service
-public class PersonalServicioImp implements PersonalServicio{
+public class PersonalServicioImp implements PersonalServicio {
+
     @Autowired
-     private PersonalDao pd;
+    private PersonalDao pd;
 
     @Override
     public String registrarPersonal(Personal p) {
-       String msg=pd.registrarPersonal(p);
-       if (msg==null) {
-            msg="Registro Exitoso";
+        String msg = "";
+        Personal pe = pd.buscarPersonal(p.getDni());
+        if (pe != null) {
+            msg = "Este usuario ya existe";
+        } else {
+            String rpta = pd.registrarPersonal(p);
+            if (rpta == null) {
+                msg = "Registro Exitoso";
+            }
         }
         return msg;
     }
 
     @Override
     public Personal buscarPersonal(String dni) {
-         Personal p= pd.buscarPersonal(dni) ;
-        if (p!=null ) {
+        Personal p = pd.buscarPersonal(dni);
+        if (p != null) {
             return p;
         }
         return null;
@@ -41,25 +48,25 @@ public class PersonalServicioImp implements PersonalServicio{
 
     @Override
     public String ActualizarPersonal(Personal p) {
-       String msg=pd.ActualizarPersonal(p);
-        if (msg==null) {
-            msg="Datos Actualizados";
+        String msg = pd.ActualizarPersonal(p);
+        if (msg == null) {
+            msg = "Datos Actualizados";
         }
         return msg;
     }
 
     @Override
     public String EliminarPersonal(String dni) {
-        String msg=pd.EliminarPersonal(dni);
-        if (msg==null) {
-            msg="Registro eliminado";
+        String msg = pd.EliminarPersonal(dni);
+        if (msg == null) {
+            msg = "Registro eliminado";
         }
         return msg;
     }
 
     @Override
     public List ListarPersonal() {
-       return pd.listarPersonal();
+        return pd.listarPersonal();
     }
 
     @Override
@@ -71,5 +78,5 @@ public class PersonalServicioImp implements PersonalServicio{
     public List ListComboPersonal() {
         return pd.ListComboPersonal();
     }
-    
+
 }
