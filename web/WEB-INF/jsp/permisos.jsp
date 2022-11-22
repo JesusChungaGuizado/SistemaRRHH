@@ -40,7 +40,7 @@
             </div>
             <div class="botones-crud">
                 <button type="button" class="btn btn-primary mb-3 " id="myBtn"><img src="img/plus.svg">Nuevo Permiso</button>
-                <input class="form-control mb-3" id="myInput" type="text" placeholder="Search..">
+                <input class="form-control mb-3" id="myInput" type="text" placeholder="Buscar...">
             </div>
             <!-- The Modal de Regsitro -->
             <div class="modal fade" id="myModal">

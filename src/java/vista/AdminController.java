@@ -30,7 +30,9 @@ public class AdminController {
 
     @RequestMapping(value = "/Login.htm", method = RequestMethod.POST)
     public @ResponseBody
-    String ValidateLogin(@RequestParam("user") String user, @RequestParam("pass") String pass, Model model, HttpServletRequest request) {
+    String ValidateLogin(
+        @RequestParam("user") String user,
+        @RequestParam("pass") String pass, Model model, HttpServletRequest request) {
         Object[] admin = (Object[]) as.Login(user, pass);
         request.getSession().setAttribute("admin", admin);
         return new Gson().toJson(admin);
@@ -115,5 +117,10 @@ public class AdminController {
         Cargo ca=new Cargo(id, nombre, tipoCargo, area, jefe);
         return new Gson().toJson(as.updateCargo(ca));
 
+    }
+     @RequestMapping(value = "/listRenovacion.htm", method = RequestMethod.GET)
+    @ResponseBody
+    public String listRenovacionContrato(Model model) {
+        return new Gson().toJson(as.ListRenovacionContratos());
     }
 }

@@ -138,8 +138,8 @@ function RegistrarEmpleado() {
             success: function (resultado) {
                 if (JSON.parse(resultado) == "Registro Exitoso") {
                     Swal.fire(
-                            'Succesfully!',
-                            'Se registro correctamente',
+                            '¡Registrado!',
+                            'Se agregó correctamente los datos',
                             'success'
                             ).then((result) => {
                         if (result.isConfirmed) {
@@ -228,8 +228,8 @@ function UpdateEmpleado() {
             success: function (resultado) {
                 if (JSON.parse(resultado) == "Datos Actualizados") {
                     Swal.fire(
-                            'Succesfully!',
-                            'Se actualizó correctamente',
+                           '¡Actualizado!',
+                            'Los datos han sido actualizados correctamente',
                             'success'
                             ).then((result) => {
                         if (result.isConfirmed) {
@@ -253,13 +253,14 @@ function DeleteEmpleado() {
             var dato = "dni=" + id.innerHTML;
             //console.log(id.innerHTML);
             Swal.fire({
-                title: 'Are you sure?',
-                text: "Se dara de baja al empleado!",
+                title: 'Estás seguro(a)?',
+                text: "Se eliminará el campo seleccionado!",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Sí, eliminar ',
+                cancelButtonText: "Cancelar"
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
@@ -269,8 +270,8 @@ function DeleteEmpleado() {
                         success: function (resultado) { //si se resive algun una respuesta
                             // $('#formulario').trigger('reset');
                             Swal.fire(
-                                    'Deleted!',
-                                    'Your file has been deleted.',
+                                    '¡Eliminado!',
+                                    'El campo seleccionado a sido eliminado',
                                     'success'
                                     ).then((result) => {
                                 if (result.isConfirmed) {

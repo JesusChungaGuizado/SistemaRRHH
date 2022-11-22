@@ -29,22 +29,22 @@
         <main >
             <div class="page-header mb-3">
                 <div>
-                    <h1>PERSONAL</h1>
+                    <h1>Personal</h1>
                 </div>
                 <div class="header-actions">
                     <button id="export-pdf">
                         <span  class="far fa-file-pdf" ></span>
-                        Export PDF
+                        Exportar PDF
                     </button>
                     <button id="export-excel">
                         <span  class="far fa-file-excel" ></span>
-                        Export EXCEL
+                        Exportar EXCEL
                     </button>
                 </div>
             </div>
             <div class="botones-crud">
                 <button type="button" class="btn btn-primary mb-3 " id="myBtn"><img src="img/plus.svg">Nuevo Personal</button>
-                <input class="form-control mb-3" id="myInput" type="text" placeholder="Search..">
+                <input class="form-control mb-3" id="myInput" type="text" placeholder="Buscar...">
             </div>
             <!-- The Modal de Regsitro -->
             <div class="modal fade" id="myModal">

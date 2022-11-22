@@ -5,7 +5,6 @@
         <div class="brand-flex">
             <span class="logo">RRHH UNION</span>
             <div class="brand-icons">
-                <span class="las la-bell" ></span>
                 <span class="las la-user-circle" ></span>
             </div>
         </div>
@@ -68,13 +67,6 @@
 
 
                 </li>
-                <li class="list__item menu-head">
-                    <div class="list__button">
-                        <img src="img/icons8-archivo.svg" style="color: #fff" class="list__img">
-                        <a href="permisos.htm" class="nav__link">Permisos</a>
-                    </div>
-                </li>
-
                 <li class="list__item list__item--click ">
                     <div class="list__button list__button--click menu-head">
                         <img src="img/icons8-clock.svg"  class="list__img">
@@ -89,23 +81,43 @@
                         <li class="list__inside">
                             <a href="asistencia.htm" class="nav__link nav__link--inside">Asistencias</a>
                         </li>
+                    </ul>
+
+
+                </li>
+                <li class="list__item list__item--click ">
+                    <div class="list__button list__button--click menu-head">
+                        <img src="img/icons8-archivo.svg"  class="list__img">
+                        <a href="#" class="nav__link">Documentos</a>
+                        <img src="img/arrow.svg"  class="list__arrow">
+                    </div>
+
+                    <ul class="list__show ">
                         <li class="list__inside">
-                            <a href="asistencia.htm" class="nav__link nav__link--inside">Faltas</a>
+                            <a href="permisos.htm"  class="nav__link nav__link--inside">Permisos</a>
                         </li>
+                        <li class="list__inside">
+                            <a href="documentos.htm" class="nav__link nav__link--inside">Contratos</a>
+                        </li>
+
                     </ul>
 
 
                 </li>
 
-
-
-
                 <li class="list__item">
                     <div class="list__button menu-head">
                         <img src="img/sign-out-alt-solid.svg" class="list__img">
-                        <a href="AdminControl?acc=LogOut" class="nav__link">Log Out</a>
+                        <a href="pagos.htm" class="nav__link">Pagos</a>
                     </div>
                 </li>
+                <li class="list__item">
+                    <div class="list__button menu-head">
+                        <img src="img/icons8-candidato.png" class="list__img">
+                        <a href="candidatos.htm" class="nav__link">Candidatos</a>
+                    </div>
+                </li>
+               
             </ul>
         </nav>
 
@@ -124,14 +136,14 @@
             </label>
         </div>
         <div class="header-icons">
-            <span class="las la-search"></span>
             <span class="las la-bookmark"></span>
             <span class="las la-sms notification" id="noti">
-                <span class="alerta" >1</span>
+                <span class="alerta" >2</span>
             </span>
         </div>
-        <section id="mensaje">
+        
+        <section id="mensaje" >
             <a href="birthday.htm" ><span class="fas fa-birthday-cake mr-2"></span>Cumpleaños del mes</a>
-
+            <a href="renovacion.htm" ><span class="fas fa-file mr-2"></span>Próximos a renovar</a>
         </section>
     </div>

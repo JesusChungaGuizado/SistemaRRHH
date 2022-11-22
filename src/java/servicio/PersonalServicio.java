@@ -6,6 +6,7 @@
 package servicio;
 
 import java.util.List;
+import negocio.Candidato;
 import negocio.Personal;
 
 /**
@@ -20,4 +21,6 @@ public interface PersonalServicio {
     public List ListarPersonal();
     public List ListarPersonalReporte();
     public List ListComboPersonal() ;
+    public String RegistrarCandidato(Candidato c);
+    public List ListCandidato();
 }

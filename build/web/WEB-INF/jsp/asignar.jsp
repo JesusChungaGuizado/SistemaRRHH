@@ -46,7 +46,7 @@
                     
                 </div>
                 <div class="d-flex ">
-                    <input class="form-control mb-3" id="myInput" type="text" placeholder="Search..">
+                    <input class="form-control mb-3" id="myInput" type="text" placeholder="Buscar...">
                    
                 </div>
             </div>

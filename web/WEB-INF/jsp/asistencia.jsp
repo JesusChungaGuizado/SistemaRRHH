@@ -5,7 +5,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>RRHH</title>
         <link rel="stylesheet" href="styles/styleAdmin.css">
-        <link rel="stylesheet" href="styles/toastr.css">
         <link
             rel="stylesheet"
             href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
@@ -28,16 +27,12 @@
                 <div>
                     <h1>Control de Asistencias</h1>
                 </div>
-                <!--  <div class="header-actions">
+                <div class="header-actions">
                       <button id="export-pdf">
                           <span  class="far fa-file-pdf" ></span>
-                          Export PDF
+                          Inasistencias
                       </button>
-                      <button id="export-excel">
-                          <span  class="far fa-file-excel" ></span>
-                          Export EXCEL
-                      </button>
-                  </div>-->
+                  </div>
             </div>
             <div class="botones-crud">
                 <div class="d-flex ">
@@ -46,7 +41,7 @@
                     
                 </div>
                 <div class="d-flex ">
-                    <input class="form-control mb-3" id="myInput" type="text" placeholder="Search..">
+                    <input class="form-control mb-3" id="myInput" type="text" placeholder="Buscar...">
                     <div class="input-group mb-3 ml-3">
                         <input type="date" id="filtrofecha" class="form-control" placeholder="Search">
                         <div class="input-group-append">
@@ -231,6 +226,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://unpkg.com/jspdf-invoice-template@1.4.0/dist/index.js"></script>
 <script type="module" src="js/Asistencia.js" ></script>
 
 

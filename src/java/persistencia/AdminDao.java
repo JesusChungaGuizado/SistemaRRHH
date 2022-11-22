@@ -27,5 +27,6 @@ public interface AdminDao {
     public List ListBirthays();
     public Object[] searchUpdateCargo(int idC);
     public String updateCargo(Cargo c);
+    public List ListRenovacionContratos();
            
 }

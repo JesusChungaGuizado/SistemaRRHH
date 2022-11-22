@@ -6,6 +6,7 @@
 package servicio;
 
 import java.util.List;
+import negocio.Candidato;
 import negocio.Personal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -77,6 +78,31 @@ public class PersonalServicioImp implements PersonalServicio {
     @Override
     public List ListComboPersonal() {
         return pd.ListComboPersonal();
+    }
+
+    @Override
+    public String RegistrarCandidato(Candidato c) {
+          String msg = "";
+          if(c.getDni()!=""){
+            Candidato pe= pd.buscarCandidatoByDni(c.getDni());
+              if (pe != null) {
+                  msg = "Este usuario ya existe";
+              } else {
+                  String rpta = pd.RegistrarCandidato(c);
+                  if (rpta == null) {
+                      msg = "Registro Exitoso";
+                  }
+              }
+          } else {
+               msg = "Complete los campos";
+        }
+              
+        return msg;
+    }
+
+    @Override
+    public List ListCandidato() {
+        return pd.ListCandidato();
     }
 
 }

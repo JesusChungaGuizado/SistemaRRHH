@@ -31,6 +31,10 @@
      <mvc:view-controller path="/inasistencia.htm" view-name="inasistencia"/>
      <mvc:view-controller path="/equipos.htm" view-name="dispositivo"/>
      <mvc:view-controller path="/asignar.htm" view-name="asignar"/>
+      <mvc:view-controller path="/pagos.htm" view-name="pago"/>
+      <mvc:view-controller path="/candidatos.htm" view-name="candidato"/>
+      <mvc:view-controller path="/renovacion.htm" view-name="renovacion"/>
+       <mvc:view-controller path="/documentos.htm" view-name="documentos"/>
     <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
 
     <!--

@@ -26,6 +26,6 @@ public interface AdminServicio {
       public List ListBirthays() ;
       public Object[] searchCargo(int id);
     public String updateCargo(Cargo c);
-    
+    public List ListRenovacionContratos();
     
 }

@@ -52,8 +52,8 @@ function RegistrarHorario() {
             success: function (resultado) {
                 if (JSON.parse(resultado) == "Registro Exitoso") {
                     Swal.fire(
-                            'Succesfully!',
-                            'Se registro correctamente',
+                            '¡Registrado!',
+                            'Se agregó correctamente el horario',
                             'success'
                             ).then((result) => {
                         if (result.isConfirmed) {
@@ -107,8 +107,8 @@ function UpdateHorario() {
             success: function (resultado) {
                 if (JSON.parse(resultado) == "Datos Actualizados") {
                     Swal.fire(
-                            'Succesfully!',
-                            'Se actualizó correctamente',
+                             '¡Actualizado!',
+                            'Horario actualizado correctamente',
                             'success'
                             ).then((result) => {
                         if (result.isConfirmed) {
@@ -130,13 +130,14 @@ function DeleteHorario() {
         lista.addEventListener("click", (e) => {
             var dato = "id=" + lista.value;
             Swal.fire({
-                title: 'Are you sure?',
-                text: "Se eliminará el horario!",
+                title: 'Estás seguro(a)?',
+                text: "Se eliminará el campo seleccionado!",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Sí, eliminar ',
+                cancelButtonText: "Cancelar"
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
@@ -146,8 +147,8 @@ function DeleteHorario() {
                         success: function (resultado) { //si se resive algun una respuesta
                             // $('#formulario').trigger('reset');
                             Swal.fire(
-                                    'Deleted!',
-                                    'Your file has been deleted.',
+                                     '¡Eliminado!',
+                                    'El horario seleccionado a sido eliminado',
                                     'success'
                                     ).then((result) => {
                                 if (result.isConfirmed) {
@@ -163,7 +164,7 @@ function DeleteHorario() {
                     });
 
                 } else {
-                    Alerta("info", "Se canceló la operación")
+                    Alerta("info", "Se canceló la operación");
                 }
             });
 

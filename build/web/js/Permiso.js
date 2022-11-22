@@ -46,8 +46,8 @@ function RegistrarPermiso() {
             success: function (resultado) {
                 if (JSON.parse(resultado) == "Registro Exitoso") {
                     Swal.fire(
-                            'Succesfully!',
-                            'Se registro correctamente',
+                            '¡Registrado!',
+                            'Se agregó correctamente los datos',
                             'success'
                             ).then((result) => {
                         if (result.isConfirmed) {
@@ -103,8 +103,8 @@ function UpdatePermiso() {
             success: function (resultado) {
                 if (JSON.parse(resultado) == "Datos Actualizados") {
                     Swal.fire(
-                            'Succesfully!',
-                            'Se actualizó correctamente',
+                             '¡Actualizado!',
+                            'Los datos han sido actualizados correctamente',
                             'success'
                             ).then((result) => {
                         if (result.isConfirmed) {
@@ -128,13 +128,14 @@ function deletePermiso(){
             var dato = "idPersonal=" + lista.value;
             console.log(dato);
             Swal.fire({
-                title: 'Are you sure?',
-                text: "Se eliminará el permiso seleccionado!",
+                 title: 'Estás seguro(a)?',
+                text: "Se eliminará el campo seleccionado!",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Sí, eliminar ',
+                cancelButtonText: "Cancelar"
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
@@ -144,8 +145,8 @@ function deletePermiso(){
                         success: function (resultado) { //si se resive algun una respuesta
                             console.log(resultado)
                             Swal.fire(
-                                    'Deleted!',
-                                    'Your file has been deleted.',
+                                    '¡Eliminado!',
+                                    'El campo seleccionado a sido eliminado',
                                     'success'
                                     ).then((result) => {
                                 if (result.isConfirmed) {

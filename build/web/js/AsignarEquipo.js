@@ -79,8 +79,8 @@ function AsignarEquipo() {
             success: function (resultado) {
                 if (JSON.parse(resultado) == "Registro Exitoso") {
                     Swal.fire(
-                            'Succesfully!',
-                            'Se registro correctamente',
+                            '¡Registrado!',
+                            'Se agregó correctamente los datos',
                             'success'
                             ).then((result) => {
                         if (result.isConfirmed) {

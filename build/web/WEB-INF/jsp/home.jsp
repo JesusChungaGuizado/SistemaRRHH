@@ -24,7 +24,7 @@
 
         <main >
             <div>
-                <h1>Analitics</h1>
+                <h1>Análisis</h1>
                 
             </div>
             <div class="cards">
@@ -61,16 +61,38 @@
                     </div>
                 </div>
 
+ <div class="card-single">
+                    <div class="card-flex">
+                        <div class="card-info">
+                            <div class="card-head">
+                                <span>Personal</span>
+                                <small>Inasistencias</small>
+                            </div>
+                            <h2 class="datosMenu"></h2>
 
+                        </div>
+                        <div class="card-chart danger">
+                            <span class="fal fa-calendar-exclamation"></span>
+                        </div>
+                    </div>
+                </div>
 
 
             </div>
            <!-- <div id='myDiv' style="width: 400px;height: 400px ;margin-top: 1rem">
 
             </div>-->
-            <div style="width: 450px;background: #fff ;margin-top: 1rem">
-                <canvas id="myChart"></canvas>
+           
+          <!-- <iframe class="mt-3" title="PowerBIVentas" width="100%" height="900" src="https://app.powerbi.com/view?r=eyJrIjoiZTA2NjYzZDktODdlYy00MDZjLWI2MmYtYWZjZDczNWRiMDY3IiwidCI6ImM0YTY2YzM0LTJiYjctNDUxZi04YmUxLWIyYzI2YTQzMDE1OCIsImMiOjR9&pageName=ReportSectionc0a9f2104a102b43feb2" frameborder="0" allowFullScreen="false"></iframe>
+            <iframe  class="mt-3" title="RRHH_Diagrama - Page 1" width="100%" height="900" src="https://app.powerbi.com/view?r=eyJrIjoiNzUzNjc2NGItNDkxYi00NjUxLTk4MGUtYzQ1YWJlYWZhMGNjIiwidCI6ImM0YTY2YzM0LTJiYjctNDUxZi04YmUxLWIyYzI2YTQzMDE1OCIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+            -->   
+            <div class="row mt-3" style="height:250px;">
+                   <canvas style="border: 1px solid #ced4da;border-radius: 3px;background: #FFF" class="col-sm-12 col-lg-4 " id="myChart"></canvas>
+                    <canvas style="border: 1px solid #ced4da;border-radius: 3px;background: #FFF " class="col-sm-12 col-lg-3 m-auto " id="myChart2"></canvas>
+               <canvas style="border: 1px solid #ced4da;border-radius: 3px;background: #FFF " class="col-sm-12 col-lg-5 " id="myChart3"></canvas>
+               
             </div>
+       
         </main>
     </div>
 </body>
@@ -85,5 +107,5 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script type="module" src="js/Admin.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src='https://cdn.plot.ly/plotly-2.14.0.min.js'></script>
+
 </html>

@@ -1,5 +1,7 @@
 import { Alerta, abrirModal, filtro, validateForm, abrirModalX, ComboSearchPersonal, ListElementComboSearchPersonal } from './Functions.js'
-        $(document).ready(function () {
+
+          
+$(document).ready(function () {
     ListAsistencia();
     abrirModalX("myBtn", "myModal");
     abrirModalX("myBtn2", "myModal2");
@@ -12,6 +14,10 @@ import { Alerta, abrirModal, filtro, validateForm, abrirModalX, ComboSearchPerso
     UpdateAsistencia();
     filtrarByFecha();
     ListInasistencias();
+    document.getElementById("export-pdf").addEventListener("click",()=> {
+        generarPDF();
+        console.log("click")
+    });
 
 });
 function ListInasistencias() {
@@ -74,8 +80,8 @@ function RegistrarAsistencia() {
             success: function (resultado) {
                 if (JSON.parse(resultado) == "Registro Exitoso") {
                     Swal.fire(
-                            'Succesfully!',
-                            'Se registro correctamente',
+                             '¡Registrado!',
+                            'Se agregó la asistencia correctamente',
                             'success'
                             ).then((result) => {
                         if (result.isConfirmed) {
@@ -131,8 +137,8 @@ function UpdateAsistencia() {
             success: function (resultado) {
                 if (JSON.parse(resultado) == "Datos Actualizados") {
                     Swal.fire(
-                            'Succesfully!',
-                            'Se actualizó correctamente',
+                            '¡Actualizado!',
+                            'Asistencia actualizada correctamente',
                             'success'
                             ).then((result) => {
                         if (result.isConfirmed) {
@@ -154,13 +160,14 @@ function DeleteAsistencia() {
         lista.addEventListener("click", (e) => {
             var dato = "id=" + lista.value;
             Swal.fire({
-                title: 'Are you sure?',
-                text: "Se eliminará el registro!",
+                title: 'Estás seguro(a)?',
+                text: "Se eliminará el campo seleccionado!",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Sí, eliminar ',
+                cancelButtonText: "Cancelar"
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
@@ -170,8 +177,8 @@ function DeleteAsistencia() {
                         success: function (resultado) { //si se resive algun una respuesta
                             // $('#formulario').trigger('reset');
                             Swal.fire(
-                                    'Deleted!',
-                                    'Your file has been deleted.',
+                                    '¡Eliminado!',
+                                    'El campo seleccionado a sido eliminado',
                                     'success'
                                     ).then((result) => {
                                 if (result.isConfirmed) {
@@ -248,3 +255,104 @@ function filtrarByFecha() {
     });
 
 }
+function generarPDF(){
+    var pdfObject = jsPDFInvoiceTemplate.default(props);
+    console.log(pdfObject)
+
+}
+    var today = new Date();
+    var now = today.getDate()+"/"+(today.getMonth()+1)+"/"+today.getFullYear();
+    console.log(now);
+    
+    var props = {
+    outputType:jsPDFInvoiceTemplate.OutputType.Save,
+    returnJsPDFDocObject: true,
+    fileName: "Reporte_Inasistencias",
+    orientationLandscape: false,
+    compress: true,
+    logo: {
+       src: "./img/Logo-Union.png",
+        type: 'PNG', //optional, when src= data:uri (nodejs case)
+        width: 26.66, //aspect ratio = width/height
+        height: 26.66,
+        margin: {
+            top: 0, //negative or positive num, from the current position
+            left: 0 //negative or positive num, from the current position
+        }
+    },
+    stamp: {
+        inAllPages: true, //by default = false, just in the last page
+        src: "https://raw.githubusercontent.com/edisonneza/jspdf-invoice-template/demo/images/qr_code.jpg",
+        type: 'JPG', //optional, when src= data:uri (nodejs case)
+        width: 20, //aspect ratio = width/height
+        height: 20,
+        margin: {
+            top: 0, //negative or positive num, from the current position
+            left: 0 //negative or positive num, from the current position
+        }
+       
+      
+    },
+    business: {
+        name: "Construcciones Metalicas Union S A",
+        address: "Jr.Rodolfo Beltrán Nro 591, Lima 15079",
+        phone: "(01) 4238338",
+        email: "union@cmusa.com.pe",
+        website: "www.union.com.pe",
+    },
+    contact: {
+        label: "Reporte:",
+        name: "Inasistencias del mes",
+       
+    },
+    invoice: {
+        invGenDate: "Fecha: "+now,
+        headerBorder: false,
+        tableBodyBorder: false,
+        header: [
+          {
+            title: "Dni", 
+            style: { 
+              width: 20 ,
+
+              
+            } 
+          }, 
+          { 
+            title: "Nombre",
+            style: {
+              width: 80,
+              
+            } 
+          }, 
+          { 
+            title: "#faltas",
+            style: {
+              width: 20,
+              
+            } 
+          },{ 
+            title: "fecha",
+            style: {
+              width: 50,
+             
+            } 
+          },  
+          
+        ],
+        table: [
+            ["86320231","ROSAS ESTEFANY",1,"10/11/2022"],
+            ["10101010","MARTINEZ OSCAR",1,"10/11/2022"],
+            ["72301542","GARCIA PEDRO",1,"10/11/2022"],
+            ["96325841","PERALES MARIA",1,"10/11/2022"],
+            ["74118030","GARCIA CELESTE",1,"10/11/2022"],
+            ["79632615","RAMOS SARA",1,"10/11/2022"]
+        ]
+        
+        },
+    footer: {
+        text: "The invoice is created on a computer and is valid without the signature and stamp.",
+    },
+    pageEnable: true,
+    pageLabel: "Page ",
+};

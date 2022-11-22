@@ -24,7 +24,7 @@
         <main >
             <div class="page-header mb-3">
                 <div>
-                    <h1>CARGOS</h1>
+                    <h1>Cargos</h1>
                 </div>
               <!--  <div class="header-actions">
                     <button id="export-pdf">
@@ -39,7 +39,7 @@
             </div>
             <div class="botones-crud">
                 <button type="button" class="btn btn-primary mb-3 " id="myBtn"><img src="img/plus.svg">Nuevo Cargo</button>
-                <input class="form-control mb-3" id="myInput" type="text" placeholder="Search..">
+                <input class="form-control mb-3" id="myInput" type="text" placeholder="Buscar...">
             </div>
             <!-- The Modal de Regsitro -->
             <div class="modal fade" id="myModal">

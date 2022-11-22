@@ -80,7 +80,20 @@ public class AdminServicioImp implements AdminServicio {
 
     @Override
     public List VerDatos() {
-        return ad.verDatos();
+         List dat = ad.verDatos();
+//         int tp=(int)(dat.get(0));
+         List datos = new ArrayList();
+          Object[] tp=(Object[])dat.get(0);
+          Object[] ti=(Object[])dat.get(2);
+           Object[] ta=(Object[])dat.get(3);  
+        int inasistencia=Integer.parseInt(tp[0].toString())-Integer.parseInt(ta[0].toString()) ;
+
+       datos.add(0, Integer.parseInt(tp[0].toString())) ;
+        datos.add(1,Integer.parseInt(ti[0].toString()));
+         datos.add(2,inasistencia );
+
+       
+        return datos;
     }
 
     @Override
@@ -142,6 +155,11 @@ public class AdminServicioImp implements AdminServicio {
           return fil;
         }
         return null;    
+    }
+
+    @Override
+    public List ListRenovacionContratos() {
+        return ad.ListRenovacionContratos();
     }
 
 }

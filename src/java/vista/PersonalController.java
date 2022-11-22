@@ -6,6 +6,7 @@
 package vista;
 
 import com.google.gson.Gson;
+import negocio.Candidato;
 import negocio.Personal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -108,5 +109,26 @@ public class PersonalController {
     public @ResponseBody
     String listarComboPersonal(Model model) {
         return new Gson().toJson(ps.ListComboPersonal());
+    }
+    
+      @RequestMapping(value = "/registrarCandidato.htm", method = RequestMethod.POST)
+    public @ResponseBody
+    String RegistrarCandidato(
+            @RequestParam("nombre") String nombre,
+            @RequestParam("dni") String dni,
+            @RequestParam("celular") String celular,
+            @RequestParam("puesto") String puesto,
+            @RequestParam("linkedin") String linkedin,
+            Model model
+    ) {
+          Candidato c=new Candidato(nombre, dni, celular, puesto, linkedin);
+         return new Gson().toJson(ps.RegistrarCandidato(c));
+
+    }
+    
+    @RequestMapping(value = "/listarCandidato.htm", method = RequestMethod.GET)
+    public @ResponseBody
+    String listarCandidato(Model model) {
+        return new Gson().toJson(ps.ListCandidato());
     }
 }
